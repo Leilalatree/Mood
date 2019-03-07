@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+	</head>
+	   <header class="mui-bar mui-bar-nav">
+        <h1 class="mui-title">首页</h1>
+    </header>
+    <div class="mui-content">
+        <ul class="mui-table-view" id="list">
+
+        </ul>
+    </div>
+	<body>
+		<script src="../js/mui.js"></script>
+		<script type="text/javascript">
+			mui.init()
+			mui.plusReady(function(){
+            mui.ajax('http://192.168.0.7/newssystem/index.php/Home/News/getlist',{
+                dataType:'json',
+                type:'get',
+                timeout:10000,
+                success:function(data){
+                    var list=document.getElementById("list");
+                    var finallist='';
+                    for(i=data.length-1;i>=0;i--){
+                        finallist=finallist+'<li data-id="'+i+'" class="mui-table-view-cell" ><a class="mui-navigate-right"><div class="mui-media-body">'+data[i].title+'<p class="mui-ellipsis">'+data[i].content+'</p></div></a></li>';
+                    }
+                    list.innerHTML=finallist;
+                    mui('#list').on('tap','li',function(){
+                        mui.openWindow({
+                            url:'detail.html',
+                            id:'detail',
+                            extras:{
+                                title:data[this.getAttribute('data-id')].title,
+                                author:data[this.getAttribute('data-id')].author,
+                                pubtime:data[this.getAttribute('data-id')].pubtime,
+                                content:data[this.getAttribute('data-id')].content
+                            }
+                        })
+                    })
+                },
+                error:function(){
+                }
+            })
+        })
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+	</head>
+	<header class="mui-bar mui-bar-nav">
+		<h1 class="mui-title">首页</h1>
+	</header>
+	<body>
+		<div class="mui-content">
+			<div id="slider" class="mui-slider" style="margin-top: 15px;">
+				<div class="mui-slider-group mui-slider-loop">
+					<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+					<div class="mui-slider-item mui-slider-item-duplicate">
+						<a href="#">
+							<img src="../images/banner1.png">
+							<p class="mui-slider-title">静静看这世界</p>
+						</a>
+					</div>
+					<div class="mui-slider-item">
+						<a href="#">
+							<img src="../images/banner2.png">
+							<p class="mui-slider-title">幸福就是可以一起睡觉</p>
+						</a>
+					</div>
+					<div class="mui-slider-item">
+						<a href="#">
+							<img src="../images/banner3.png">
+							<p class="mui-slider-title">想要一间这样的木屋，静静的喝咖啡</p>
+						</a>
+					</div>
+					<div class="mui-slider-item">
+						<a href="#">
+							<img src="../images/banner4.jpeg">
+							<p class="mui-slider-title">Color of SIP CBD</p>
+						</a>
+					</div>
+					
+					<!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+					<div class="mui-slider-item mui-slider-item-duplicate">
+						<a href="#">
+							<img src="../images/banner1.png">
+							<p class="mui-slider-title">幸福就是可以一起睡觉</p>
+						</a>
+					</div>
+				</div>
+				<div class="mui-slider-indicator mui-text-right" style="margin-top: 2rem;">
+					<div class="mui-indicator mui-active"></div>
+					<div class="mui-indicator"></div>
+					<div class="mui-indicator"></div>
+					<div class="mui-indicator"></div>
+				</div>
+			</div>
+			<div class="article-list">
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell">
+						Item 2
+					</li>
+					<li class="mui-table-view-cell">Item 2</li>
+					<li class="mui-table-view-cell">Item 3</li>
+				</ul>
+			</div>
+		</div>
+
+		<script src="../js/mui.js"></script>
+		<script type="text/javascript">
+			mui.init({
+				swipeBack:true //启用右滑关闭功能【一旦取值为false，左右触控滑动将会失效！】
+			})
+			// 滚动插件
+			var slider = mui("#slider");
+			slider.slider({
+				interval: 1000
+			});
+			mui.plusReady(function() {
+				mui.ajax('http://192.168.0.7/newssystem/index.php/Home/News/getlist', {
+					dataType: 'json',
+					type: 'get',
+					timeout: 10000,
+					success: function(data) {
+						var list = document.getElementById("list");
+						var finallist = '';
+						for (i = data.length - 1; i >= 0; i--) {
+							finallist = finallist + '<li data-id="' + i +
+								'" class="mui-table-view-cell" ><a class="mui-navigate-right"><div class="mui-media-body">' + data[i].title +
+								'<p class="mui-ellipsis">' + data[i].content + '</p></div></a></li>';
+						}
+						list.innerHTML = finallist;
+						mui('#list').on('tap', 'li', function() {
+							mui.openWindow({
+								url: 'detail.html',
+								id: 'detail',
+								extras: {
+									title: data[this.getAttribute('data-id')].title,
+									author: data[this.getAttribute('data-id')].author,
+									pubtime: data[this.getAttribute('data-id')].pubtime,
+									content: data[this.getAttribute('data-id')].content
+								}
+							})
+						})
+					},
+					error: function() {}
+				})
+			})
+		</script>
+	</body>
+
+</html>

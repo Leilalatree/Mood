@@ -8,9 +8,12 @@
 		<script type="text/javascript">
 			document.write('<script src="../../js/fix.js?rd=?rd=' + Math.random() + '"><\/script>');
 		</script>
-		<script type="text/javascript">
-			link(['../../css/reset.css']);
-		</script>
+		
+		<link href="../../css/imgpreview.css" rel="stylesheet" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link href="../../css/reset.css" rel="stylesheet" />
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/mui.js"></script>
 	</head>
 
 	<body>
@@ -55,10 +58,36 @@
 				</ul>
 			</div>
 		</div>
-		<script type="text/javascript">
-			//必须顺序加载
-			script(['../../js/my/addFriend.js']);
+		<script>
+			mui.init();
+			mui.plusReady(function() {
+				document.getElementById("scan").addEventListener("tap", function() {
+					mui.toast("宝宝，这个暂未开通呢，敬请期待:-D...");
+				})
+				document.getElementById("mobilebook").addEventListener("tap", function() {
+					mui.toast("宝宝，这个暂未开通呢，敬请期待:-D...");
+				})
+				//搜索
+				document.getElementById("search").addEventListener("tap", function() {
+					mui.openWindow({
+						url: "myFriendsSearch.html",
+						id: "myFriendsSearch.html",
+						show: {
+							autoShow: true, //页面loaded事件发生后自动显示，默认为true
+							aniShow: "none", //页面显示动画，默认为”slide-in-right“；
+							event: 'titleUpdate', //页面显示时机，默认为titleUpdate事件时显示
+							extras: {} //窗口动画是否使用图片加速
+						},
+						waiting: {
+							autoShow: false, //自动显示等待框，默认为true
+						}
+					})
+				});
+			
+			})
 		</script>
+		
+		
 	</body>
 
 </html>

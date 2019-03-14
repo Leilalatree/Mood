@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+	</head>
+	<style>
+		.mui-content{
+			width: 95%;
+			margin-left: 2.5%;
+			background: white;
+			height: 25rem;
+			margin-top:3.5rem;
+			border-radius: 0.5rem;
+			padding-top: 0rem;
+		}
+		.mui-bar-nav~.mui-content {
+			padding-top: 1.25rem;
+		}
+		.question{
+			width: 94%;
+			line-height: 1.7rem;
+			font-size: 1.125rem;
+			margin-left: 3%;
+			/* background: #000000; */
+			font-size: 1.125rem;
+			margin-bottom: 1rem;
+			
+		}
+		.mui-input-row .mui-radio{
+			font-size: 1rem;
+			line-height: 1.75rem;
+			border-bottom: #777777 solid 0.0625rem;
+		}
+	</style>
+	<header class="mui-bar mui-bar-nav">
+		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		<h1 class="mui-title">PHQ-9抑郁情绪测试</h1>
+	</header>
+	<body>
+		<div class="mui-content">
+			<div class="question">1、最近你的睡眠状态怎样怎样啊是不是还可以呀</div>
+			<div class="options">
+				<div class="mui-input-row mui-radio ">
+					<label>radio</label>
+					<input name="radio1" value="1" type="radio">
+				</div>
+				<div class="mui-input-row mui-radio ">
+					<label>radio</label>
+					<input name="radio1" value="2" type="radio">
+				</div>
+			</div>
+		</div>
+		<script src="../../js/mui.js"></script>
+		<script type="text/javascript">
+			mui.init()
+		</script>
+	</body>
+
+</html>

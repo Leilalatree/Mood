@@ -5,14 +5,131 @@
 		<meta charset="utf-8">
 		<title></title>
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-		<link href="css/mui.css" rel="stylesheet" />
-	</head>
-
-	<body>
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<script src="../js/mui.min.js"></script>
 		<script src="../js/mui.js"></script>
-		<script type="text/javascript">
-			mui.init()
-		</script>
-	</body>
+	</head>
+	<style type="text/css">
+		.theme-list {
+			margin-bottom: 50px;
+			width: 97%;
+			margin: 0.5rem  1.5%  0 1.5%;
+			padding-top: 0.5rem;
+		}
 
+		#theme-data {
+			width: 100%;
+			/* background: #000000; */
+			padding-top: 1rem;
+			margin: 0;
+			padding: 0;
+
+		}
+
+		.theme-list li {
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-box-align: center;
+			align-items: center;
+			/* background: #000000; */
+			margin: 0 0 0.5rem 0;
+			padding: 0.5rem 1rem 0.5rem 1rem;
+			background: white;
+			border-radius: 0.35rem;
+		}
+
+		.theme-avator {
+			width: 6.5rem;
+			height: 4.5rem;
+			display: -ms-inline-flexbox;
+			display: inline-flex;
+			-webkit-box-align: center;
+			-ms-flex-align: center;
+			align-items: center;
+			-webkit-box-pack: center;
+			-ms-flex-pack: center;
+			justify-content: center;
+			color: #fff;
+			border-radius: 0.13333rem;
+			padding: 0.26667rem 0.32rem;
+			box-sizing: border-box;
+			text-align: center;
+			background-color: #ccc;
+			background-size: cover;
+			background-position-x: center;
+			margin-left: ;
+			font-size: 0.75rem;
+		}
+
+		.theme-list .theme-info {
+			-webkit-box-flex: 1;
+			-ms-flex: 1;
+			flex: 1;
+		}
+
+		.theme-list .theme-link {
+			width: 3rem;
+			line-height: 1.6rem;
+			font-size: 0.75rem;
+			color: #fff;
+			font-size: ;
+			background: #42a5ff;
+			border-radius: 100px;
+			margin-left: 0.4rem;
+			text-align: center;
+		}
+
+		.theme-list .theme-info .title {
+			font-size: 16px;
+			display: -webkit-box;
+			-webkit-box-orient: vertical;
+			-webkit-line-clamp: 2;
+			overflow: hidden;
+			margin-bottom: 0.13333rem;
+			margin-left: 0.5rem;
+		}
+	</style>
+	<header class="mui-bar mui-bar-nav">
+		<h1 class="mui-title">记录</h1>
+	</header>
+	<body>
+		<div class="mui-content" style="margin-top;">
+			<div class="theme-list">
+				<ul id="theme-data">
+					<li>
+						<div class="theme-avator" style="background-image: url(https://ossimg.xinli001.com/20190130/953f09beacaba4b40ca543940107df99.jpg?x-oss-process=image/resize,m_mfit,h_300,w_300)">
+							<span>#这是完美主义吗？</span>
+						</div>
+						<div class="theme-info">
+							<div class="title">
+								6篇精选文章，若干测试·课程·FM
+							</div>
+							<!-- 此处为主题关注状态，若已关注则加上followed类 data-theme-id处填入主题id -->
+							<div class="follow-status follow " data-theme-id="249"></div>
+						</div>
+						<a href="https://m.xinli001.com/article/theme/detail?id=249" class="theme-link">测试</a>
+					</li>
+					<li>
+						<div class="theme-avator" style="background-image: url(https://ossimg.xinli001.com/20190130/953f09beacaba4b40ca543940107df99.jpg?x-oss-process=image/resize,m_mfit,h_300,w_300)">
+							<span>#这是完美主义吗？</span>
+						</div>
+						<div class="theme-info">
+							<div class="title">
+								6篇精选文章，若干测试·课程·FM
+							</div>
+							<!-- 此处为主题关注状态，若已关注则加上followed类 data-theme-id处填入主题id -->
+							<div class="follow-status follow " data-theme-id="249"></div>
+						</div>
+						<a href="https://m.xinli001.com/article/theme/detail?id=249" class="theme-link">测试</a>
+					</li>
+				</ul>
+			</div>
+
+		</div>
+
+	</body>
+	<script type="text/javascript">
+		mui.init()
+	</script>
 </html>

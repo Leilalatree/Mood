@@ -1,0 +1,200 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+	</head>
+	
+	<style type="text/css">
+		.article-list {
+			width: 98%;
+			margin: 0 1% 0 1%;
+			/* background: #000000; */
+		}
+
+		.article {
+			width: 100%;
+			height: 9.5rem;
+			/* margin: 0.3125rem; */
+			background: white;
+			border-radius: 0.625rem;
+			margin-bottom: 1rem;
+		}
+
+		.article .intro-img {
+			width: 7.5rem;
+			margin: 0.9rem 0.5rem 0.9rem 0.6rem;
+			float: left;
+			/* display:inline-block; */
+		}
+
+		.article .contnet-title {
+			width: 61%;
+			height: ;
+			margin: 0.7rem 0;
+			/* display: inline; */
+			float: left;
+			/* background: #000000; */
+		}
+
+		.contnet-title .main-title {
+			width: 100%;
+			font-size: 1rem;
+			color: #333;
+			margin-bottom: 8px;
+			line-height: 22px;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			display: -webkit-box;
+			-webkit-box-orient: vertical;
+			-webkit-line-clamp: 2;
+			margin-right: 35px;
+		}
+
+		.contnet-title .small-title {
+			width: 100%;
+			;
+			font-size: 12px;
+			color: #666;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			display: -webkit-box;
+			-webkit-box-orient: vertical;
+			-webkit-line-clamp: 2;
+			line-height: 18px;
+
+		}
+
+		.writer {
+			font-size: 12px;
+			color: #5c96ff;
+			line-height: 14px;
+		}
+	</style>
+	<header class="mui-bar mui-bar-nav mui-bar-transparent">
+		<h1 class="mui-title">首页</h1>
+	</header>
+	<body>
+		<!-- <div class="mui-content"> -->
+			<div id="slider" class="mui-slider" >
+				<div class="mui-slider-group mui-slider-loop">
+					<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+					<div class="mui-slider-item mui-slider-item-duplicate">
+						<a href="#">
+							<img src="../images/banner1.png">
+							<p class="mui-slider-title">静静看这世界</p>
+						</a>
+					</div>
+					<div class="mui-slider-item">
+						<a href="#">
+							<img src="../images/banner2.png">
+							<p class="mui-slider-title">幸福就是可以一起睡觉</p>
+						</a>
+					</div>
+					<div class="mui-slider-item">
+						<a href="#">
+							<img src="../images/banner3.png">
+							<p class="mui-slider-title">想要一间这样的木屋，静静的喝咖啡</p>
+						</a>
+					</div>
+					<div class="mui-slider-item">
+						<a href="#">
+							<img src="../images/banner4.jpeg">
+							<p class="mui-slider-title">Color of SIP CBD</p>
+						</a>
+					</div>
+
+					<!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+					<div class="mui-slider-item mui-slider-item-duplicate">
+						<a href="#">
+							<img src="../images/banner1.png">
+							<p class="mui-slider-title">幸福就是可以一起睡觉</p>
+						</a>
+					</div>
+				</div>
+				<div class="mui-slider-indicator mui-text-right" style="margin-top: 2rem;">
+					<div class="mui-indicator mui-active"></div>
+					<div class="mui-indicator"></div>
+					<div class="mui-indicator"></div>
+					<div class="mui-indicator"></div>
+				</div>
+			</div>
+			<div class="mui-content">
+			<div class="article-list">
+				<div class="article">
+					<div class="intro-img">
+						<img src="https://ossimg.xinli001.com/20190314/ae7a7b150ad73a59b40b6a068a268874.jpeg!120x120" alt="">
+					</div>
+					<div class="contnet-title">
+						<a target="_blank" class="common-a" href="https://www.xinli001.com/info/100442407?source=pc-home">
+							<p class="main-title">开始心理咨询前，你需要做的准备</p>
+						</a>
+						<p class="small-title">
+							咨询一旦开始，这件事和一个陌生人，就成了你生活中的一部分，你要把它规化进来。 </p>
+						<p class="writer">壹心理</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="article">
+				<div class="intro-img">
+					<img src="https://ossimg.xinli001.com/20190313/bf0f4968021e081e7eb47c4db540d9fc.jpeg!120x120" alt="">
+				</div>
+				<div class="contnet-title">
+					<a target="_blank" class="common-a" href="https://www.xinli001.com/info/100442407?source=pc-home">
+						<p class="main-title">2019年，心理学领域发展的10个方向，你了解吗？</p>
+					</a>
+					<p class="small-title"> 找准趋势，方能快人一步。2019心理学领域发展的10个趋势是什么？让我们看一看APA通讯杂志为我们带来的2019年度趋势报告。 </p>
+					<p class="writer">壹心理</p>
+				</div>
+			</div>
+		</div>
+		</div>
+
+		<script src="../js/mui.js"></script>
+		<script type="text/javascript">
+			mui.init({
+				swipeBack: true //启用右滑关闭功能【一旦取值为false，左右触控滑动将会失效！】
+			})
+			// 滚动插件
+			var slider = mui("#slider");
+			slider.slider({
+				interval: 1000
+			});
+			mui.plusReady(function() {
+				mui.ajax('http://192.168.0.7/newssystem/index.php/Home/News/getlist', {
+					dataType: 'json',
+					type: 'get',
+					timeout: 10000,
+					success: function(data) {
+						var list = document.getElementById("list");
+						var finallist = '';
+						for (i = data.length - 1; i >= 0; i--) {
+							finallist = finallist + '<li data-id="' + i +
+								'" class="mui-table-view-cell" ><a class="mui-navigate-right"><div class="mui-media-body">' + data[i].title +
+								'<p class="mui-ellipsis">' + data[i].content + '</p></div></a></li>';
+						}
+						list.innerHTML = finallist;
+						mui('#list').on('tap', 'li', function() {
+							mui.openWindow({
+								url: 'detail.html',
+								id: 'detail',
+								extras: {
+									title: data[this.getAttribute('data-id')].title,
+									author: data[this.getAttribute('data-id')].author,
+									pubtime: data[this.getAttribute('data-id')].pubtime,
+									content: data[this.getAttribute('data-id')].content
+								}
+							})
+						})
+					},
+					error: function() {}
+				})
+			})
+		</script>
+	</body>
+
+</html>

@@ -16,6 +16,7 @@
 			margin-top:3.5rem;
 			border-radius: 0.5rem;
 			padding-top: 0rem;
+			position: relative;
 		}
 		.mui-bar-nav~.mui-content {
 			padding-top: 1.25rem;
@@ -30,10 +31,30 @@
 			margin-bottom: 1rem;
 			
 		}
-		.mui-input-row .mui-radio{
+		.mui-input-row,.mui-radio{
 			font-size: 1rem;
 			line-height: 1.75rem;
-			border-bottom: #777777 solid 0.0625rem;
+			/* border: #0062CC 0.0625rem solid; */
+			
+		}
+		.hr{
+			width: 90%;
+			height: 0.03125rem;
+			margin-left: 5%;
+			border-bottom: #000000 solid 0.0625rem;
+		}
+		.mui-radio input[type='radio']:checked:before {
+		    content: '\e442';
+		}
+		.mui-button-row{
+			position: absolute;
+			bottom: 0.625rem;
+			left: 42%;
+		}
+		.mui-bar-footer{
+			position: absolute;
+			bottom: 1.25rem;
+			left: 46%;
 		}
 	</style>
 	<header class="mui-bar mui-bar-nav">
@@ -45,15 +66,21 @@
 			<div class="question">1、最近你的睡眠状态怎样怎样啊是不是还可以呀</div>
 			<div class="options">
 				<div class="mui-input-row mui-radio ">
-					<label>radio</label>
-					<input name="radio1" value="1" type="radio">
+					<label>selection1</label>
+					<input name="radio1" value="selection1" type="radio">
 				</div>
+				<div class="hr"></div>
 				<div class="mui-input-row mui-radio ">
-					<label>radio</label>
-					<input name="radio1" value="2" type="radio">
+					<label>selection2</label>
+					<input name="radio1" value="selection2" type="radio">
 				</div>
 			</div>
+			<div class="mui-button-row"> 
+				<button  type="button" value="上一题" class="mui-btn mui-btn-primary mui-btn-outlined pre-btn">上一题</button>
+				<button type="button" value="提交" class="mui-btn mui-btn-primary mui-btn-outlined submit-btn" style="display: none;">提交</button>
+			</div>
 		</div>
+		<div class="mui-bar-footer">1/15</div>
 		<script src="../../js/mui.js"></script>
 		<script type="text/javascript">
 			mui.init()

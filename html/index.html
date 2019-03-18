@@ -73,9 +73,9 @@
 			line-height: 14px;
 		}
 	</style>
-	<header class="mui-bar mui-bar-nav mui-bar-transparent">
+	<!-- <header class="mui-bar mui-bar-nav mui-bar-transparent">
 		<h1 class="mui-title">首页</h1>
-	</header>
+	</header> -->
 	<body>
 		<!-- <div class="mui-content"> -->
 		<div id="slider" class="mui-slider">
@@ -90,7 +90,7 @@
 				<div class="mui-slider-item">
 					<a href="#">
 						<img src="../images/banner2.png">
-						<p class="mui-slider-title">幸福就是可以一起睡觉</p>
+						<p class="mui-slider-title">幸福就是可以安安静静</p>
 					</a>
 				</div>
 				<div class="mui-slider-item">
@@ -110,7 +110,7 @@
 				<div class="mui-slider-item mui-slider-item-duplicate">
 					<a href="#">
 						<img src="../images/banner1.png">
-						<p class="mui-slider-title">幸福就是可以一起睡觉</p>
+						<p class="mui-slider-title">幸福就是可以安静下来</p>
 					</a>
 				</div>
 			</div>
@@ -121,14 +121,14 @@
 				<div class="mui-indicator"></div>
 			</div>
 		</div>
-		<div class="mui-content" style="margin-top: -1rem;">
+		<div class="mui-content" style="margin-top: 1rem;">
 			<div class="article-list">
 				<div class="article">
 					<div class="intro-img">
 						<img src="https://ossimg.xinli001.com/20190314/ae7a7b150ad73a59b40b6a068a268874.jpeg!120x120" alt="">
 					</div>
 					<div class="contnet-title">
-						<a target="_blank" class="common-a" href="https://www.xinli001.com/info/100442407?source=pc-home">
+						<a target="_blank" class="common-a" href="subpage/article.html">
 							<p class="main-title">开始心理咨询前，你需要做的准备</p>
 						</a>
 						<p class="small-title">
@@ -143,14 +143,42 @@
 					<img src="https://ossimg.xinli001.com/20190313/bf0f4968021e081e7eb47c4db540d9fc.jpeg!120x120" alt="">
 				</div>
 				<div class="contnet-title">
-					<a target="_blank" class="common-a" href="https://www.xinli001.com/info/100442407?source=pc-home">
+					<a target="_blank" class="common-a" href="">
 						<p class="main-title">2019年，心理学领域发展的10个方向，你了解吗？</p>
 					</a>
 					<p class="small-title"> 找准趋势，方能快人一步。2019心理学领域发展的10个趋势是什么？让我们看一看APA通讯杂志为我们带来的2019年度趋势报告。 </p>
 					<p class="writer">壹心理</p>
 				</div>
 			</div>
+
+			<div class="article">
+				<div class="intro-img">
+					<img src="https://ossimg.xinli001.com/20190312/9e531d81c859fd5c44a158dc4b5ef182.jpeg!120x120" alt="">
+				</div>
+				<div class="contnet-title">
+					<a target="_blank" class="common-a" href="">
+						<p class="main-title">《都挺好》：什么时候，你才能认清他们永远不会爱你</p>
+					</a>
+					<p class="small-title">
+						人善于欺骗自己，但欺骗是一种需要，通过欺骗自己，获得良好的感受，获得安全。 </p>
+					<p class="writer">壹心理</p>
+				</div>
+			</div>
 		</div>
+		
+		<div class="article">
+				<div class="intro-img">
+					<img src="https://ossimg.xinli001.com/20190312/9e531d81c859fd5c44a158dc4b5ef182.jpeg!120x120" alt="">
+				</div>
+				<div class="contnet-title">
+					<a target="_blank" class="common-a" href="">
+						<p class="main-title">《都挺好》：什么时候，你才能认清他们永远不会爱你</p>
+					</a>
+					<p class="small-title">
+						人善于欺骗自己，但欺骗是一种需要，通过欺骗自己，获得良好的感受，获得安全。 </p>
+					<p class="writer">壹心理</p>
+				</div>
+			</div>
 		</div>
 
 		<script src="../js/mui.js"></script>
@@ -162,6 +190,13 @@
 			var slider = mui("#slider");
 			slider.slider({
 				interval: 1000
+			});
+			mui(".main-title")[1].addEventListener("tap", function() {
+				console.log('点击第二个页面')
+				mui.openWindow({
+					url: 'subpage/article.html',
+					id: 1
+				})
 			});
 			mui.plusReady(function() {
 				mui.ajax('http://192.168.0.7/newssystem/index.php/Home/News/getlist', {

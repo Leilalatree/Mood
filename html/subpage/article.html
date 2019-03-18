@@ -1,4 +1,4 @@
-<!doctype html>
+ <!doctype html>
 <html>
 
 	<head>
@@ -9,7 +9,13 @@
 		<link href="../../css/theme-yixinli.css" rel="stylesheet" />
 	</head>
 	<style>
-		
+		.mui-bar-nav{
+			-webkit-box-shadow: none;
+			box-shadow: none;
+		}
+		.mui-scroll-wrapper{
+			background-color: white;
+		}
 		.article-cover img{
 		width: 100%;
 		height: auto;
@@ -26,7 +32,8 @@
 		.article-title {
 			font-size: 19px;
 			color: #000;
-			margin: 0.53333rem 0 .13333rem;
+			margin: 0.53333rem  0.4rem;
+			
 		}
 		.article-info {
 			width: 100%;
@@ -60,7 +67,7 @@
 	<header class="mui-bar mui-bar-nav mui-bar-transparent data-top='0' data-offset='150' data-duration='16' data-scrollby="
 	 .mui-scroll-wrapper"">
 		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
-		<h1 class="mui-title">文章详情</h1>
+		<h1 class="mui-title"></h1>
 	</header>
 	<div class="article-cover">
 		<img src="https://ossimg.xinli001.com/20180809/5ea686e73184f9b93281ffc38882d078.jpeg?x-oss-process=image/quality,Q_80" />
@@ -79,7 +86,7 @@
 						<div class="yxl-editor">
 							<div class="yxl-editor-article">
 								<div class="yxl-editor-article ">
-						
+
 									<p><br></p>
 									<p><img src="https://ossimg.xinli001.com/20180809/49c01779828ca17a62431a78b98a7db7.png?x-oss-process=image/quality,Q_80"></p>
 									<p><br></p>
@@ -287,7 +294,7 @@
 									<p><span style="">不敢为自己争取，即使受了委屈</span></p>
 									<p><span style="">拼命嫌弃自己，拼命优秀想要被爱</span></p>
 									<p><span style="">特别在乎别人的看法，渴望被肯定</span></p>
-									
+
 								</div>
 							</div>
 						</div>
@@ -300,7 +307,9 @@
 	<body>
 		<script src="../../js/mui.min.js"></script>
 		<script type="text/javascript">
-			mui.init()
+			mui.init({
+				swipeBack: true //启用右滑关闭功能  
+			})
 			mui('.mui-bar-transparent').transparent({
 				top: 0,
 				offset: 150,

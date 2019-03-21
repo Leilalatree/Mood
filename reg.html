@@ -44,8 +44,8 @@
 		<div class="mui-content">
 			<form class="mui-input-group">
 				<div class="mui-input-row">
-					<label>账号</label>
-					<input id='account' type="text" class="mui-input-clear mui-input" placeholder="请输入账号">
+					<label>昵称</label>
+					<input id='nickname' type="text" class="mui-input-clear mui-input" placeholder="请输入账号">
 				</div>
 				<div class="mui-input-row">
 					<label>密码</label>
@@ -75,13 +75,13 @@
 				$.plusReady(function() {
 					var settings = app.getSettings();
 					var regButton = doc.getElementById('reg');
-					var accountBox = doc.getElementById('account');
+					var nicknameBox = doc.getElementById('nickname');
 					var passwordBox = doc.getElementById('password');
 					var passwordConfirmBox = doc.getElementById('password_confirm');
 					var emailBox = doc.getElementById('email');
 					regButton.addEventListener('tap', function(event) {
 						var regInfo = {
-							account: accountBox.value,
+							nickname: nicknameBox.value,
 							password: passwordBox.value,
 							email: emailBox.value
 						};
@@ -90,12 +90,14 @@
 							plus.nativeUI.toast('密码两次输入不一致');
 							return;
 						}
+						console.log(regInfo.nickname)
 						app.reg(regInfo, function(err) {
+							
 							if (err) {
 								plus.nativeUI.toast(err);
 								return;
 							}
-							plus.nativeUI.toast('注册成功');
+							plus.nativeUI.toast('注册成功,请在2小时内前往邮箱点击链接验证账号');
 							/*
 							 * 注意：
 							 * 1、因本示例应用启动页就是登录页面，因此注册成功后，直接显示登录页即可；

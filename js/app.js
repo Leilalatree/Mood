@@ -10,9 +10,10 @@
 	owner.login = function(loginInfo, callback) {
 		callback = callback || $.noop;
 		loginInfo = loginInfo || {};
-		loginInfo.account = loginInfo.account || '';
-		loginInfo.password = loginInfo.password || '';
-		if (loginInfo.account.length < 5) {
+// 		loginInfo.nickname = loginInfo.nickname || '';
+ 		loginInfo.password = loginInfo.password || '';
+		loginInfo.email = loginInfo.email || '';
+		if (loginInfo.nickname.length < 5) {
 			return callback('账号最短为 5 个字符');
 		}
 		if (loginInfo.password.length < 6) {
@@ -20,7 +21,7 @@
 		}
 		var users = JSON.parse(localStorage.getItem('$users') || '[]');
 		var authed = users.some(function(user) {
-			return loginInfo.account == user.account && loginInfo.password == user.password;
+			return loginInfo.email == user.email && loginInfo.password == user.password;
 		});
 		if (authed) {
 			return owner.createState(loginInfo.account, callback);
@@ -43,9 +44,11 @@
 	owner.reg = function(regInfo, callback) {
 		callback = callback || $.noop;
 		regInfo = regInfo || {};
-		regInfo.account = regInfo.account || '';
+		regInfo.nickname = regInfo.nickname || '';
 		regInfo.password = regInfo.password || '';
-		if (regInfo.account.length < 5) {
+		// regInfo.email = regInfo.email || '';
+		if (regInfo.nickname.length < 5) {
+			console.log(regInfo.nickname)
 			return callback('用户名最短需要 5 个字符');
 		}
 		if (regInfo.password.length < 6) {
@@ -54,11 +57,55 @@
 		if (!checkEmail(regInfo.email)) {
 			return callback('邮箱地址不合法');
 		}
-		var users = JSON.parse(localStorage.getItem('$users') || '[]');
-		users.push(regInfo);
-		localStorage.setItem('$users', JSON.stringify(users));
-		return callback();
+
+		mui.ajax('http://172.16.19.213:5656/mood/register', {
+			data: regInfo,
+			dataType: 'json', //服务器返回json格式数据
+			type: 'post', //HTTP请求类型
+			timeout: 80000, //超时时间设置为10秒；
+			success: function(data) {
+				var users = JSON.parse(localStorage.getItem('$users') || '[]');
+				users.push(regInfo);
+				localStorage.setItem('$users', JSON.stringify(users));
+				return callback();
+			},
+			error: function(xhr, type, errorThrown) {
+				
+				const errorTextObj = xhr.responseText;
+				if(errorTextObj){
+					const errorText = errorTextObj.error
+					mui.alert(errorText, "错误", "OK", null);
+					return;
+				}
+				mui.alert("<网络连接失败，请重新尝试一下>", "错误", "OK", null);
+			}
+		});
+
 	};
+// 	function postData(url){
+// 		mui.ajax('http://172.16.19.213:5656/mood/register', {
+// 			data: regInfo,
+// 			dataType: 'json', //服务器返回json格式数据
+// 			type: 'post', //HTTP请求类型
+// 			timeout: 80000, //超时时间设置为10秒；
+// 			success: function(data) {
+// 				var users = JSON.parse(localStorage.getItem('$users') || '[]');
+// 				users.push(regInfo);
+// 				localStorage.setItem('$users', JSON.stringify(users));
+// 				return callback();
+// 			},
+// 			error: function(xhr, type, errorThrown) {
+// 				
+// 				const errorTextObj = xhr.responseText;
+// 				if(errorTextObj){
+// 					const errorText = errorTextObj.error
+// 					mui.alert(errorText, "错误", "OK", null);
+// 					return;
+// 				}
+// 				mui.alert("<网络连接失败，请重新尝试一下>", "错误", "OK", null);
+// 			}
+// 		});
+// 	}
 
 	/**
 	 * 获取当前状态
@@ -107,12 +154,12 @@
 	 * 设置应用本地配置
 	 **/
 	owner.getSettings = function() {
-			var settingsText = localStorage.getItem('$settings') || "{}";
-			return JSON.parse(settingsText);
-		}
-		/**
-		 * 获取本地是否安装客户端
-		 **/
+		var settingsText = localStorage.getItem('$settings') || "{}";
+		return JSON.parse(settingsText);
+	}
+	/**
+	 * 获取本地是否安装客户端
+	 **/
 	owner.isInstalled = function(id) {
 		if (id === 'qihoo' && mui.os.plus) {
 			return true;

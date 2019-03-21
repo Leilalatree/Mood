@@ -5,131 +5,140 @@
 		<meta charset="utf-8">
 		<title></title>
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.css" rel="stylesheet" />
 		<link href="../css/mui.min.css" rel="stylesheet" />
-		<script src="../js/mui.min.js"></script>
-		<script src="../js/mui.js"></script>
+
+		<link href="../css/date/mui.picker.css" rel="stylesheet" />
+		<link href="../css/date/mui.picker.min.css" rel="stylesheet" />
+		<link href="../css/date/mui.poppicker.css" rel="stylesheet" />
 	</head>
 	<style type="text/css">
-		.theme-list {
-			margin-bottom: 50px;
+		.mui-content {
 			width: 97%;
-			margin: 0.5rem  1.5%  0 1.5%;
-			padding-top: 0.5rem;
+			margin: 3.5rem 1.5%;
+			background-color: #FFFFFF;
+			border-radius: 5px;
+			box-shadow: 2px 2px 3px #00173E;
 		}
 
-		#theme-data {
+		.mui-content-padded img {
+			width: 36px;
+			height: auto;
+			/* display: inline-block; */
+			vertical-align: middle;
+		}
+
+		.mui-table-cell {
 			width: 100%;
-			/* background: #000000; */
-			padding-top: 1rem;
-			margin: 0;
-			padding: 0;
-
-		}
-
-		.theme-list li {
-			display: -webkit-box;
-			display: -ms-flexbox;
-			display: flex;
-			-webkit-box-align: center;
-			align-items: center;
-			/* background: #000000; */
-			margin: 0 0 0.5rem 0;
-			padding: 0.5rem 1rem 0.5rem 1rem;
-			background: white;
-			border-radius: 0.35rem;
-		}
-
-		.theme-avator {
-			width: 6.5rem;
-			height: 4.5rem;
-			display: -ms-inline-flexbox;
-			display: inline-flex;
-			-webkit-box-align: center;
-			-ms-flex-align: center;
-			align-items: center;
-			-webkit-box-pack: center;
-			-ms-flex-pack: center;
-			justify-content: center;
-			color: #fff;
-			border-radius: 0.13333rem;
-			padding: 0.26667rem 0.32rem;
-			box-sizing: border-box;
-			text-align: center;
-			background-color: #ccc;
-			background-size: cover;
-			background-position-x: center;
-			margin-left: ;
-			font-size: 0.75rem;
-		}
-
-		.theme-list .theme-info {
-			-webkit-box-flex: 1;
-			-ms-flex: 1;
-			flex: 1;
-		}
-
-		.theme-list .theme-link {
-			width: 3rem;
-			line-height: 1.6rem;
-			font-size: 0.75rem;
-			color: #fff;
-			font-size: ;
-			background: #42a5ff;
-			border-radius: 100px;
-			margin-left: 0.4rem;
-			text-align: center;
-		}
-
-		.theme-list .theme-info .title {
-			font-size: 16px;
-			display: -webkit-box;
-			-webkit-box-orient: vertical;
-			-webkit-line-clamp: 2;
-			overflow: hidden;
-			margin-bottom: 0.13333rem;
-			margin-left: 0.5rem;
+			/* border: #000000 1px solid; */
+			display: inline-block;
 		}
 	</style>
-	<header class="mui-bar mui-bar-nav">
-		<h1 class="mui-title">记录</h1>
+	<header class="mui-bar mui-bar-nav"id="nav-date">
+		<h1 id="mui-title"class="mui-title"></h1>
 	</header>
 	<body>
-		<div class="mui-content" style="margin-top;">
-			<div class="theme-list">
-				<ul id="theme-data">
-					<li>
-						<div class="theme-avator" style="background-image: url(https://ossimg.xinli001.com/20190130/953f09beacaba4b40ca543940107df99.jpg?x-oss-process=image/resize,m_mfit,h_300,w_300)">
-							<span>#这是完美主义吗？</span>
-						</div>
-						<div class="theme-info">
-							<div class="title">
-								6篇精选文章，若干测试·课程·FM
-							</div>
-							<!-- 此处为主题关注状态，若已关注则加上followed类 data-theme-id处填入主题id -->
-							<div class="follow-status follow " data-theme-id="249"></div>
-						</div>
-						<a href="https://m.xinli001.com/article/theme/detail?id=249" class="theme-link">测试</a>
-					</li>
-					<li>
-						<div class="theme-avator" style="background-image: url(https://ossimg.xinli001.com/20190130/953f09beacaba4b40ca543940107df99.jpg?x-oss-process=image/resize,m_mfit,h_300,w_300)">
-							<span>#这是完美主义吗？</span>
-						</div>
-						<div class="theme-info">
-							<div class="title">
-								6篇精选文章，若干测试·课程·FM
-							</div>
-							<!-- 此处为主题关注状态，若已关注则加上followed类 data-theme-id处填入主题id -->
-							<div class="follow-status follow " data-theme-id="249"></div>
-						</div>
-						<a href="https://m.xinli001.com/article/theme/detail?id=249" class="theme-link">测试</a>
-					</li>
-				</ul>
+		<div class="mui-content" style="">
+			<div class="mui-content-padded" style="margin-top:-1.5rem;text-align: center;">
+				<img class="" src="../images/record/notice.png" />
+				<span style="vertical-align: middle;">每天记录有助于情绪管理哦</span>
 			</div>
+			<ul class="mui-table-view mui-table-view-striped mui-table-view-condensed">
+				<li class="mui-table-view-cell" id="mood-record">
+					<div class="mui-table-cell mui-col-xs-5">
+						<button id='showMoodPicker' class="mui-btn mui-icon mui-icon- mui-btn-block" type='button'>心情如何</button>
+					</div>
+				</li>
+				<li class="mui-table-view-cell" id="sleep-record">
+					<div class="mui-table-cell mui-col-xs-5">
+						<button id='showSleepPicker' class="mui-btn mui-icon mui-icon- mui-btn-block" type='button'>睡眠质量</button>
+					</div>
+				</li>
+			</ul>
 
 		</div>
-
 	</body>
+	<script src="../js/mui.min.js"></script>
+	<script src="../js/mui.js"></script>
+	<script src="../js/date/moment.js"></script>
+	<script src="../js/date/mui.picker.min.js"></script>
 	<script type="text/javascript">
 		mui.init()
+		// 头部显示今天日期
+		const title = document.getElementById('mui-title');
+		const nowString = new Date(Date.now()).toLocaleDateString();
+		const nowArry = nowString.split('/');
+		const year = nowArry[2];
+		const month = nowArry[0];
+		title.textContent = `${year}-${month}-${nowArry[1]}`;
+
+		//心情选项
+		const moodPicker = new mui.PopPicker();
+		moodPicker.setData([{
+				value: 0,
+				text: '比平常差'
+			}, {
+				value: 1,
+				text: '与平常一样'
+			},
+			{
+				value: 2,
+				text: '比平常好'
+			}
+		]);
+		const showMoodPickerButton = document.getElementById('showMoodPicker');
+		showMoodPickerButton.addEventListener('tap', function(event) {
+			moodPicker.show(function(items) {
+				console.log(items);
+				const selectItemText = items[0].text
+				const displayText = "今天的心情：" +  selectItemText;
+				showMoodPicker.innerText = displayText;
+				//返回 false 可以阻止选择框的关闭
+				//return false;
+			});
+		}, false);
+		// 睡眠选项
+		const sleepPicker = new mui.PopPicker();
+		sleepPicker.setData([{
+				value: 0,
+				text: '失眠(包括入睡困难、早醒)'
+			}, {
+				value: 1,
+				text: '正常'
+			},
+			{
+				value: 2,
+				text: '嗜睡'
+			}
+		]);
+		const showSleepPickerButton = document.getElementById('showSleepPicker');
+		showSleepPickerButton.addEventListener('tap', function(event) {
+			sleepPicker.show(function(items) {
+				console.log(items);
+				const selectItemText = items[0].text
+				const displayText = "今天的睡眠质量：" +  selectItemText;
+				showMoodPicker.innerText = displayText;
+				//返回 false 可以阻止选择框的关闭
+				//return false;
+			});
+		}, false);
+		
+		
+
+		var dtpicker = new mui.DtPicker({
+			type: "date", //设置日历初始视图模式 
+			beginDate: new Date(2019,0), //设置开始日期 
+			endDate: new Date(Date.now()), //设置结束日期 
+			labels: ['年', '月', '日'], //设置默认标签区域提示语 
+		})
+		const navDate = document.getElementById('nav-date')
+		navDate.addEventListener('tap',function(event){
+			dtpicker.show(function(e) {
+					console.log(e);
+				})
+		})
+				
+// 		var iTems = dtpicker.getSelectedItems()
+// 		console.log(iTems)
 	</script>
 </html>

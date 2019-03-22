@@ -13,16 +13,49 @@
 // 		loginInfo.nickname = loginInfo.nickname || '';
  		loginInfo.password = loginInfo.password || '';
 		loginInfo.email = loginInfo.email || '';
-		if (loginInfo.nickname.length < 5) {
-			return callback('账号最短为 5 个字符');
+		// if (loginInfo.nickname.length < 5) {
+		// 	return callback('账号最短为 5 个字符');
+		// }
+
+		if (!checkEmail(loginInfo.email)) {
+			return callback('邮箱地址不合法');
 		}
 		if (loginInfo.password.length < 6) {
 			return callback('密码最短为 6 个字符');
 		}
-		var users = JSON.parse(localStorage.getItem('$users') || '[]');
+		console.log(loginInfo)
+		// var users = JSON.parse(localStorage.getItem('$users') || '[]');
+		// 公司：172.16.19.213:5656
+		// 学校:172.100.89.127
+		mui.ajax('http://172.100.89.127:5656/mood/login', {
+			data: loginInfo,
+			dataType: 'json', //服务器返回json格式数据
+			type: 'post', //HTTP请求类型
+			timeout: 80000, //超时时间设置为10秒；
+			success: function(data) {
+				loginInfo.token = data.token
+				var users = JSON.parse(localStorage.getItem('$users') || '[]');
+				users.push(loginInfo);
+				localStorage.setItem('$users', JSON.stringify(users));
+				return callback();
+			},
+			error: function(xhr, type, errorThrown) {				
+				const errorTextObj = xhr.responseText;
+				if(errorTextObj){
+					const errorText = errorTextObj.error
+					mui.alert(errorText, "错误", "OK", null);
+					return;
+				}
+				mui.alert("<网络连接失败，请重新尝试一下>", "错误", "OK", null);
+			}
+		});
+		
+		
 		var authed = users.some(function(user) {
 			return loginInfo.email == user.email && loginInfo.password == user.password;
 		});
+		
+		
 		if (authed) {
 			return owner.createState(loginInfo.account, callback);
 		} else {

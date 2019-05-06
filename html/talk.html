@@ -1,25 +1,301 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-
 	<head>
 		<meta charset="utf-8">
-		<title></title>
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>世界</title>
 		<link href="../css/mui.css" rel="stylesheet" />
-	</head>
-	<div class="mui-card">
-		<!--页眉，放置标题-->
-		<div class="mui-card-header mui-card-media">页眉</div>
-		<!--内容区-->
-		<div class="mui-card-content">内容区</div>
-		<!--页脚，放置补充信息或支持的操作-->
-		<div class="mui-card-footer">页脚</div>
-	</div>
-	<body>
-		<script src="../js/mui.js"></script>
-		<script type="text/javascript">
-			mui.init()
-		</script>
-	</body>
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<script src="../js/mui.min.js"></script>
+		<script src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
 
+	</head>
+	<style type="text/css">
+	.mui-content{
+		margin-top:18px;
+	}
+	#publish-area{
+		width: 100%;
+	}
+	 #publish-area{
+		background-color: white;
+		margin-bottom: 10px;
+		border-radius: 5px;
+	 }
+	 .mood_text{
+		 position: relative;
+		 width: 100%;
+		 font-size: 14px;
+		 margin: 0;
+		 border: none;
+	 }
+	 .publish {
+		 position: absolute;
+		 top: 150px;
+		 left: 80%;
+	 }
+	 #avater{
+		width: 100%;
+	 }
+	 #avater img{
+		width: 40px;
+		height: 40px;
+		border-radius:10px;
+		margin:0.625rem 0 0.625rem 0.625rem;
+		float: left;
+	 }
+	 #avater span {
+		display: inline-block;
+		line-height: 40px;
+		margin: 0.625rem 0 0.625rem 0.3125rem;
+		font-size: 0.9375rem;
+	 }
+	 #text p{
+		 display:inline-block ;
+		 margin: 0px 10px;
+		 margin-bottom: 10px;
+		 font-size: 1rem;
+		 color: #00173E;
+	 }
+	 .mui-table-view li{
+		 border-bottom: darkgrey solid 0.0625rem;
+		 width: 100%;
+		 height: auto;
+		 overflow:hidden;
+		 background-color: white;
+	 }
+	.bottom_item{
+		height: auto;
+		margin:0 0.625rem ;
+		
+	}
+	.bottom_left{
+		float: left;
+		width: 6.25rem;
+		height: 1.25rem;
+	}
+	.time{
+		display: inline-block;
+		font-size: 0.625rem;		
+		vertical-align: middle;
+		
+	}
+	.bottom_left img{
+		width: 1.125rem;
+		height: auto;
+	}
+	.like{
+		display: inline-block;
+	}
+	.bottom_right{
+		float: right;
+	}
+	.like{
+		height: 1.125rem;
+		width: auto;
+		border: none;
+		background-image: url(../images/talk/like_default.png);
+		background-repeat: no-repeat;
+		background-size:contain;
+	}
+	.my_like{
+		background-image: url(../images/talk/like.png);
+	}
+	#remark{
+		width: 96%;
+		height: 1.5625rem;
+		margin: 0.3125rem 2%;
+		font-size: 0.8125rem;
+		line-height: 1.25rem;
+		background: #cdd5eb;
+		border: none;
+	}
+	#remarks_ul{
+		list-style: none;
+		width: 95%;
+		padding: 0;
+		margin-top:30px;
+		margin-left: 2.5%;
+		border-top:solid darkgrey 0.5px;
+	}
+	#remarks_ul li{
+		width: 100%;
+		margin: 0.3125rem 0.8%;
+		border: none;
+		font-size: 13px;
+	}
+	#remarks_ul li:first-child{
+		
+		margin-top: 10px;
+	}
+	</style>
+	<body>
+		<header class="mui-bar mui-bar-nav" style="height: 60px;">
+			<div class="mui-segmented-control">
+				<a class="mui-control-item mui-active" href="#word">世界</a>
+				<a class="mui-control-item" href="#item2">我的</a>
+				<a class="mui-control-item" href="#item2">喜欢</a>
+				<a class="mui-control-item" href="#item2">通知</a>
+			</div>
+		</header>
+		<div class="mui-content">
+			<div id="world">
+				<div id="publish-area">	
+					<textarea rows="5" cols="30" class="mui-input-speech mui-input-clear mood_text " placeholder="写点什么"></textarea>
+					<button id="publish_btn" type="button" class="mui-btn mui-btn-red publish">发布</button>
+				</div>
+			<div id="twitter">
+				<ul class="mui-table-view">
+					<li>
+						<div  id="avater">	
+							<img src="../images/head.png">
+							<span id="username">
+								今天天气好
+							</span>
+						</div>
+						<div id="text">
+							<p>酸枣糕可以助眠是非常有用的</p>
+						</div>	
+						<div class="bottom_item">
+							<div class="bottom_left">
+								<img src="../images/talk/clock.png">
+								<p class="time"> 5-4 14:00</p>
+							</div>
+							<div class="bottom_right">
+								<button  class="like" ></button>
+							</div>
+						</div>
+						<form id="remark_form" type=submit value="OK">
+							<ul id="remarks_ul">
+								<li><span class="name">五六：<span>真的吗</li>
+								<li><span class="name">七八：<span>我要试试看</li>
+							<input  id="remark" class="mui-input-speech" type="text" placeholder="评论" />
+							</ul>						
+						</form>
+					</li>
+					<li>
+						<div  id="avater">	
+							<img src="../images/head.png">
+							<span id="username">
+								我是五六
+							</span>
+						</div>
+						<div id="text">
+							<p>这样的天气适合喝枸杞泡茶</p>
+						</div>	
+						<div class="bottom_item">
+							<div class="bottom_left">
+								<img src="../images/talk/clock.png">
+								<p class="time"> 5-4 14:00</p>
+							</div>
+							<div class="bottom_right">
+								<button  class="like" ></button>
+							</div>
+						</div>
+						<form id="remark_form" type=submit value="OK">
+							<ul id="remarks_ul">
+								<li><span class="name">五六：<span>真的吗</li>
+								<li><span class="name">七八：<span>我要试试看</li>
+							<input  id="remark" class="mui-input-speech" type="text" placeholder="评论" />
+							</ul>						
+						</form>
+					</li>
+					<li>
+						<div  id="avater">	
+							<img src="../images/head.png">
+							<span id="username">
+								我是五六
+							</span>
+						</div>
+						<div id="text">
+							<p>想问问哪里的山楂糕好吃</p>
+						</div>	
+						<div class="bottom_item">
+							<div class="bottom_left">
+								<img src="../images/talk/clock.png">
+								<p class="time"> 5-4 14:00</p>
+							</div>
+							<div class="bottom_right">
+								<button  class="like" ></button>
+							</div>
+						</div>
+						<form id="remark_form" type=submit value="OK">
+							<ul id="remarks_ul">
+								<li><span class="name">五六：<span>我知道！</li>
+							<input  id="remark" class="mui-input-speech" type="text" placeholder="评论" />
+							</ul>						
+						</form>
+					</li>
+				</ul>	
+			</div>
+		</div>
+	</body>
 </html>
+	
+<script type="text/javascript" charset="utf-8">
+	var $$= jQuery.noConflict(); 
+	mui.init();
+	// 发布动态
+	var publish_btn =document.getElementById('publish_btn');
+	//监听点击事件
+	publish_btn.addEventListener("tap",function () {
+	  var text = mui('textarea')[0].value;
+	  if(!text){
+		mui.alert("内容不能为空~","提示","确定")
+	  }else{
+		  
+		const nowString = new Date(Date.now()).toLocaleDateString();
+		const nowArry = nowString.split('/');
+		const year = nowArry[2];
+		let month = (nowArry[0] < 10) ? ('0' + nowArry[0]) : nowArry[0]
+		let day = (nowArry[1] < 10) ? ('0' + nowArry[1]) : nowArry[1];
+		const time =  new Date().toLocaleTimeString()
+		var publishTime = `${year}-${month}-${day} ${time}`;
+		var publishTime = new Date().toLocaleDateString()
+		let content = 
+					'<li>'+
+						'<div  id="avater"><img src="../images/head.png"><span id="username">今天天气好</span></div>'+
+						'<div id="text"><p>'+text+'</p></div>'+
+						'<div id="remark"><button></button></div>'
+					'</li>';
+					
+		$$(".mui-table-view").prepend(content); 
+		$$('textarea').val('')
+	  }
+	 
+	});
+	// 点赞          
+	$$(".like").click(function () {
+		$$(this).toggleClass('my_like');                
+	})
+    // 评论
+	document.getElementById('remark_form').onsubmit = function() {
+	const remark = mui('#remark')[0].value;
+		if(remark){
+			const content = '<li><p>'+remark+'</p><li>';
+			$$(this).parent().append(content)
+			console.log($$(this).parent())
+		}
+	}
+
+	//触发submit按钮的点击事件
+	// mui.trigger(publish_btn,'tap');
+	function publish(){
+		
+	}
+	//ajax
+	function postData(url, data, callback, waitingDialog) {
+		mui.ajax(url, {
+			data: 'data=' + JSON.stringify(data),
+			dataType: 'json',
+			type: 'post',
+			contentType: "application/x-www-form-urlencoded; charset=utf-8",
+			timeout: 60000,
+			success: callback,
+			error: function(xhr, type, errorThrown) {
+				waitingDialog.close();
+				mui.alert("<网络连接失败，请重新尝试一下>", "错误", "OK", null);
+			}
+		});
+	}
+</script>

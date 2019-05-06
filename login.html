@@ -7,6 +7,8 @@
 		<title></title>
 		<link href="css/mui.min.css" rel="stylesheet" />
 		<link href="css/style.css" rel="stylesheet" />
+		<script src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
+
 		<style>
 			#head-img{
 				margin-left:25%;
@@ -125,6 +127,7 @@
 				<div class="link-area"><a id='reg'>注册账号</a> <span class="spliter">|</span> <a id='forgetPassword'>忘记密码</a>
 				</div>
 			</div>
+			<!-- 第三方登录的方式 -->
 			<div class="mui-content-padded oauth-area">
 
 			</div>
@@ -133,15 +136,21 @@
 		<script src="js/mui.enterfocus.js"></script>
 		<script src="js/app.js"></script>
 		<script>
+			//将mui,document使用$和doc代替
 			(function($, doc) {
 				$.init({
 					statusBarBackground: '#f7f7f7'
 				});
+				//h5+事件的准备，所有的h5+事件必须经过初始化
 				$.plusReady(function() {
+					//禁止屏幕翻转选项
 					plus.screen.lockOrientation("portrait-primary");
+					//H5+事件获取设置和状态
 					var settings = app.getSettings();
 					var state = app.getState();
+					//定义主页视图
 					var mainPage = plus.webview.getWebviewById("main");
+					//定义加载完毕标记，并初始化为未完成主页加载
 					var main_loaded_flag = false;
 					if(!mainPage){
 						mainPage = $.preload({
@@ -156,6 +165,7 @@
 						main_loaded_flag = true;
 					});
 					var toMain = function() {
+						console.log(1)
 						//使用定时器的原因：
 						//可能执行太快，main页面loaded事件尚未触发就执行自定义事件，此时必然会失败
 						var id = setInterval(function () {
@@ -168,6 +178,7 @@
 					};
 					//检查 "登录状态/锁屏状态" 开始
 					if (settings.autoLogin && state.token && settings.gestures) {
+						//设置了手势解锁
 						$.openWindow({
 							url: 'unlock.html',
 							id: 'unlock',
@@ -179,6 +190,7 @@
 							}
 						});
 					} else if (settings.autoLogin && state.token) {
+						// 未设置
 						toMain();
 					} else {
 						app.setState(null);

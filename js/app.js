@@ -10,12 +10,12 @@
 	owner.login = function(loginInfo, callback) {
 		callback = callback || $.noop;
 		loginInfo = loginInfo || {};
-// 		loginInfo.nickname = loginInfo.nickname || '';
+
  		loginInfo.password = loginInfo.password || '';
 		loginInfo.email = loginInfo.email || '';
-		// if (loginInfo.nickname.length < 5) {
-		// 	return callback('账号最短为 5 个字符');
-		// }
+		if (loginInfo.nickname.length < 1) {
+			return callback('账号不能为空');
+		}
 
 		if (!checkEmail(loginInfo.email)) {
 			return callback('邮箱地址不合法');
@@ -23,44 +23,48 @@
 		if (loginInfo.password.length < 6) {
 			return callback('密码最短为 6 个字符');
 		}
-		console.log(loginInfo)
-		// var users = JSON.parse(localStorage.getItem('$users') || '[]');
+		var users = {};
 		// 公司：172.16.19.213:5656
-		// 学校:172.100.89.127
-		mui.ajax('http://172.100.89.127:5656/mood/login', {
+		// 学校校图书馆:172.100.89.127
+		// 学校外部图书馆：172.100.89.8
+		// SBS-stu :172.16.206.26
+		// 家里的：192.168.1.6
+		mui.ajax('http://192.168.1.6:5656/mood/login', {
 			data: loginInfo,
 			dataType: 'json', //服务器返回json格式数据
-			type: 'post', //HTTP请求类型
-			timeout: 80000, //超时时间设置为10秒；
+			type: 'POST', //HTTP请求类型
+			timeout: 8000, //超时时间设置为10秒；
 			success: function(data) {
-				loginInfo.token = data.token
-				var users = JSON.parse(localStorage.getItem('$users') || '[]');
-				users.push(loginInfo);
+				users.email = loginInfo.email
+				users.password = loginInfo.password
+				console.log(JSON.stringify(loginInfo))
+				console.log(JSON.stringify(users))
 				localStorage.setItem('$users', JSON.stringify(users));
-				return callback();
+				localStorage.setItem('token',JSON.stringify(data.token))
+				return owner.createState(loginInfo.account, callback);
 			},
 			error: function(xhr, type, errorThrown) {				
 				const errorTextObj = xhr.responseText;
 				if(errorTextObj){
 					const errorText = errorTextObj.error
+					console.log(errorText)
 					mui.alert(errorText, "错误", "OK", null);
-					return;
 				}
 				mui.alert("<网络连接失败，请重新尝试一下>", "错误", "OK", null);
 			}
 		});
 		
-		
-		var authed = users.some(function(user) {
-			return loginInfo.email == user.email && loginInfo.password == user.password;
-		});
-		
-		
-		if (authed) {
-			return owner.createState(loginInfo.account, callback);
-		} else {
-			return callback('用户名或密码错误');
-		}
+// 		if(users){
+// 			var authed = users.some(function(user) {
+// 				return loginInfo.email == user.email && loginInfo.password == user.password;
+// 			});
+// 			if (authed) {
+// 				return owner.createState(loginInfo.email, callback);
+// 			} else {
+// 				return callback('用户名或密码错误');
+// 			}
+		// }
+
 	};
 
 	owner.createState = function(name, callback) {
@@ -79,10 +83,9 @@
 		regInfo = regInfo || {};
 		regInfo.nickname = regInfo.nickname || '';
 		regInfo.password = regInfo.password || '';
-		// regInfo.email = regInfo.email || '';
-		if (regInfo.nickname.length < 5) {
-			console.log(regInfo.nickname)
-			return callback('用户名最短需要 5 个字符');
+		regInfo.email = regInfo.email || '';
+		if (regInfo.nickname.length < 1) {
+			return callback('用户名不能为空哦');
 		}
 		if (regInfo.password.length < 6) {
 			return callback('密码最短需要 6 个字符');
@@ -90,12 +93,13 @@
 		if (!checkEmail(regInfo.email)) {
 			return callback('邮箱地址不合法');
 		}
-
-		mui.ajax('http://172.16.19.213:5656/mood/register', {
+		console.log(JSON.stringify(regInfo))
+		mui.ajax('http://192.168.1.6:5656/mood/register', {
 			data: regInfo,
 			dataType: 'json', //服务器返回json格式数据
-			type: 'post', //HTTP请求类型
-			timeout: 80000, //超时时间设置为10秒；
+			type: 'POST', //HTTP请求类型
+			timeout: 100, //超时时间设置为10秒；
+			headers:{'Content-Type':'application/json'},
 			success: function(data) {
 				var users = JSON.parse(localStorage.getItem('$users') || '[]');
 				users.push(regInfo);
@@ -103,42 +107,18 @@
 				return callback();
 			},
 			error: function(xhr, type, errorThrown) {
-				
 				const errorTextObj = xhr.responseText;
 				if(errorTextObj){
 					const errorText = errorTextObj.error
 					mui.alert(errorText, "错误", "OK", null);
 					return;
 				}
+				console.log(JSON.stringify(xhr))
 				mui.alert("<网络连接失败，请重新尝试一下>", "错误", "OK", null);
 			}
 		});
-
 	};
-// 	function postData(url){
-// 		mui.ajax('http://172.16.19.213:5656/mood/register', {
-// 			data: regInfo,
-// 			dataType: 'json', //服务器返回json格式数据
-// 			type: 'post', //HTTP请求类型
-// 			timeout: 80000, //超时时间设置为10秒；
-// 			success: function(data) {
-// 				var users = JSON.parse(localStorage.getItem('$users') || '[]');
-// 				users.push(regInfo);
-// 				localStorage.setItem('$users', JSON.stringify(users));
-// 				return callback();
-// 			},
-// 			error: function(xhr, type, errorThrown) {
-// 				
-// 				const errorTextObj = xhr.responseText;
-// 				if(errorTextObj){
-// 					const errorText = errorTextObj.error
-// 					mui.alert(errorText, "错误", "OK", null);
-// 					return;
-// 				}
-// 				mui.alert("<网络连接失败，请重新尝试一下>", "错误", "OK", null);
-// 			}
-// 		});
-// 	}
+
 
 	/**
 	 * 获取当前状态

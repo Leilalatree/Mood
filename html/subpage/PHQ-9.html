@@ -24,15 +24,14 @@
 		.question{
 			width: 94%;
 			line-height: 1.7rem;
-			font-size: 1.125rem;
+			font-size: 1rem;
 			margin-left: 3%;
 			/* background: #000000; */
-			font-size: 1.125rem;
 			margin-bottom: 1rem;
 			
 		}
 		.mui-input-row,.mui-radio{
-			font-size: 1rem;
+			font-size: 0.9375rem;
 			line-height: 1.75rem;
 			/* border: #0062CC 0.0625rem solid; */
 			
@@ -41,7 +40,7 @@
 			width: 90%;
 			height: 0.03125rem;
 			margin-left: 5%;
-			border-bottom: #000000 solid 0.0625rem;
+			border-bottom: darkgray solid 0.0625rem;			
 		}
 		.mui-radio input[type='radio']:checked:before {
 		    content: '\e442';
@@ -58,26 +57,36 @@
 		}
 	</style>
 	<header class="mui-bar mui-bar-nav">
-		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" href="../test.html"></a>
 		<h1 class="mui-title">PHQ-9抑郁情绪测试</h1>
 	</header>
 	<body>
 		<div class="mui-content">
-			<div class="question">1、最近你的睡眠状态怎样怎样啊是不是还可以呀</div>
+			<div class="question">1、在过去的两周内做什么事都没兴趣, 沒意思</div>
 			<div class="options">
 				<div class="mui-input-row mui-radio ">
-					<label>selection1</label>
-					<input name="radio1" value="selection1" type="radio">
+					<label>没有</label>
+					<input name="answer" value="0" type="radio" checked="true">
 				</div>
 				<div class="hr"></div>
 				<div class="mui-input-row mui-radio ">
-					<label>selection2</label>
-					<input name="radio1" value="selection2" type="radio">
+					<label>有几天</label>
+					<input name="answer" value="1" type="radio">
+				</div>
+				<div class="hr"></div>
+				<div class="mui-input-row mui-radio ">
+					<label>一半以上</label>
+					<input name="answer" value="2" type="radio">
+				</div>
+				<div class="hr"></div>
+				<div class="mui-input-row mui-radio ">
+					<label>几乎天天</label>
+					<input name="answer" value="3" type="radio">
 				</div>
 			</div>
 			<div class="mui-button-row"> 
-				<button  type="button" value="上一题" class="mui-btn mui-btn-primary mui-btn-outlined pre-btn">上一题</button>
-				<button type="button" value="提交" class="mui-btn mui-btn-primary mui-btn-outlined submit-btn" style="display: none;">提交</button>
+				<button  type="button" class="mui-btn mui-btn-primary mui-btn-outlined pre-btn">下一题</button>
+				<button type="button" value="submite" class="mui-btn mui-btn-primary mui-btn-outlined submit-btn" style="display: none;">提交</button>
 			</div>
 		</div>
 		<div class="mui-bar-footer">1/15</div>
@@ -86,6 +95,7 @@
 			mui.init({
 				swipeBack:true
 			})
+			
 		</script>
 	</body>
 

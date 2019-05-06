@@ -47,6 +47,10 @@
 				position: relative;
 			}
 		</style>
+		<script>
+			let user = localStorage.getItem('$users')
+			console.log("user.html:"+  JSON.stringify(user))
+		</script>
 	</head>
 
 	<body>
@@ -55,14 +59,17 @@
 				<span class="" id="msgStatus"></span>
 			</a>
 		</header> -->
+		
 
 		<div class="mui-content pt0 mui-scroll-wrapper" id="pullrefresh">
 			<div class="mui-scroll">
 				<ul class="mui-table-view mb1rem bg tblv-nl" style="position: relative;">
 					<li class="mui-text-center ptb10" id="user_warp">
 						<div class="ckecklogin" id="goLogin" data-loginbackid="my/user.html" id="user_warp">
+							<a href="../login.html" >
 							<img class="bor-r50p mt15 img50 borf" src="../images/defuser.jpg" />
 							<h5 class="cor-fff lh30">请先登录/注册 </h5>
+							<a href="../login.html" >
 						</div>
 					</li>
 					<canvas id="canvas" height="105" style="position:absolute;bottom: 0;left:0px;z-index:-1;width: 100%;"></canvas>
@@ -92,19 +99,9 @@
 				</ul> -->
 			</div>
 		</div>
+		
 		<script type="text/html" id="user_view">
-			{{if data.IsLogin}}
-			<div class="mui-text-center">
-				<img class="mt15 bor-r50p img50 borf ckecklogin" src="{{data.ImgUrl}}" id="headimg" data-loginevent="loginEvent.upload_headimg()" />
-			</div>
-			<h5 class="cor-fff fs17">{{data.NickName}}</h5>
-			<p class="ckecklogin cor-fff" id="editSignature" data-loginevent="loginEvent.editSignature()" data-loginbackid="my/user.html">{{data.Signature}} <i class="iconfont icon-edit"></i></p>
-
-			{{else}}
-			<div class="ckecklogin" id="goLogin" data-loginbackid="my/user.html" id="user_warp">
-				<img class="bor-r50p mt15 img50 borf" src="../images/defuser.jpg" />
-				<h5 class="cor-fff lh30">请先登录/注册 </h5>
-			</div> {{/if}}
+		
 		</script>
 		<script src="../js/my/user.js"></script>
 

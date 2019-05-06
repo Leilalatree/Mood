@@ -30,12 +30,31 @@
 
 	.mui-table-cell {
 		width: 100%;
-		/* border: #000000 1px solid; */
 		display: inline-block;
 	}
-
 	ul .mui-btn.mui-icon {
-		font-size: 0.95rem
+		font-size: 0.95rem;
+	}
+	.mui-table-view-cell:after {
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		left: 1px;
+		height: 1px;
+		content: '';
+		-webkit-transform: scaleY(.5);
+		transform: scaleY(.5);
+		background-color: #c8c7cc;
+	}
+	.bottom_btn{
+		width: 100%;
+		height: 3.125rem;
+		/* border: #000000 0.0625rem solid; */
+	}
+	.save{ 
+		width: 5rem;
+		display: inline-block;
+		margin-left:37%;
 	}
 </style>
 <header class="mui-bar mui-bar-nav" id="nav-date">
@@ -69,8 +88,12 @@
 					<button id='showEnergyPicker' class="mui-btn mui-icon  mui-btn-block" type='button'>兴致活力</button>
 				</div>
 			</li>
-			<div id='textBlock' class="mui-input-row" style="margin: 10px 5px;" >
+			
+			<div id='textBlock' class="mui-input-row" style="margin:20px 5px 0 0.3125rem;" >
 				<textarea id="textarea" rows="5" placeholder="记录一下今天吧"></textarea>
+			</div>
+			<div class="bottom_btn">
+				<button class="mui-btn-blue mui-btn-outlined save">保存</button>
 			</div>
 			<!-- <li class="mui-table-view-cell" id="note">
 				<div class="mui-table-cell mui-col-xs-5">
